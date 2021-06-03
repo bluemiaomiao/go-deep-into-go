@@ -1,0 +1,23 @@
+{
+  "name": "go-deep-into-go",
+  "version": "1.0.0",
+  "description": "> An awesome project.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "docsify-pdf-converter": "^2.0.7"
+  },
+  "scripts": {
+    "convert": "node_modules/.bin/docsify-pdf-converter"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluemiaomiao/go-deep-into-go.git"
+  },
+  "author": "bluemiaomiao",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bluemiaomiao/go-deep-into-go/issues"
+  },
+  "homepage": "https://github.com/bluemiaomiao/go-deep-into-go#readme"
+}
