@@ -6,11 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"/>
-  <link rel="stylesheet" href="//unpkg.com/docsify-gifcontrol/dist/docsify-gifcontrol.css">
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/style.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/docsify-toc@1.0.0/dist/toc.css">
+  <link id="dyn-theme" rel="stylesheet" href="https://unpkg.com/docsify/lib/themes/vue.css">
   <style type="text/css">
     html {
       scrollbar-face-color:dodgerblue;
@@ -40,9 +36,26 @@
       -webkit-box-shadow:inset 0 0 5px rgba(0,0,0,0.2);
       background:rgba(0,0,0,0.4)
     }
+    .dyn-theme-btn {
+      width: 35px;
+      height: 35px;
+      background-color: #005F8D;
+      z-index: 100;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      cursor: pointer;
+      border-radius: 5px;
+    }
   </style>
 </head>
 <body>
+  <div class="dyn-theme-btn" onclick="handleChangeTheme()">主题</div>
   <div data-app id="app">加载中...</div>
   <script>
     window.$docsify = {
@@ -52,54 +65,63 @@
       subMaxLevel: 3,
       coverpage: true,
       auto2top: true,
-      homepage: 'index.md',
-      noEmoji: false,
-      search: {
-        placeholder: '搜索相关章节',
-        depth: 5
-      },
-      count:{
-        countable:true,
-        fontsize:'0.9em',
-        color:'rgb(90,90,90)',
-        language:'chinese'
-      },
-      share: {
-        reddit: true,
-        linkedin: true,
-        facebook: true,
-        twitter: true,
-        whatsapp: true,
-        telegram: true,
-      },
-      progress: {
-        position: "top",
-        color: "var(--theme-color,#42b983)",
-        height: "3px",
-      },
-      toc: {
-        scope: '.markdown-section',
-        headings: 'h1, h2, h3, h4, h5, h6',
-        title: 'Table of Contents',
+      homepage: '_index.md',
+      noEmoji: false
+    };
+    var themeCount = 1;
+    function handleChangeTheme () {
+      const simpleTheme = "https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple.css";
+      const defaultTheme = "https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-defaults.css";
+      const darkTheme = "https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css";
+      const vueTheme = "https://unpkg.com/docsify/lib/themes/vue.css";
+      const vueDarkTheme = "https://cdn.jsdelivr.net/npm/docsify/themes/dark.css";
+      const pureTheme = "https://cdn.jsdelivr.net/npm/docsify/themes/pure.css";
+      const bubleTheme = "https://cdn.jsdelivr.net/npm/docsify/themes/buble.css";
+      const dolphinTheme = "https://cdn.jsdelivr.net/npm/docsify/themes/dolphin.css";
+
+      let dynThemeElement = document.getElementById('dyn-theme');
+      dynThemeElement.href = "https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css";
+
+      themeCount++;
+
+      if (themeCount >= 9) { themeCount = 1; }
+
+      if (themeCount == 1) {
+        dynThemeElement.href = vueTheme;
+      } else if (themeCount == 2) {
+        dynThemeElement.href = simpleTheme;
+      } else if (themeCount == 3) {
+        dynThemeElement.href = defaultTheme;
+      } else if (themeCount == 4) {
+        dynThemeElement.href = darkTheme;
+      } else if (themeCount == 5) {
+        dynThemeElement.href = vueDarkTheme;
+      } else if (themeCount == 6) {
+        dynThemeElement.href = pureTheme;
+      } else if (themeCount == 7) {
+        dynThemeElement.href = bubleTheme;
+      } else if (themeCount == 8) {
+        dynThemeElement.href = dolphinTheme;
+      } else {
+        dynThemeElement.href = vueTheme;
       }
     }
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
+  <script src="https://unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-bash.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-c.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-cpp.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-css.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-ini.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-json.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-regex.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-yaml.min.js"></script>
+  <script src="https://unpkg.com/prismjs/components/prism-sql.min.js"></script>  
+  <script src="https://unpkg.com/prismjs/components/prism-go.min.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=String.prototype.normalize"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/emoji.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
-  <script src="https://unpkg.com/docsify-count/dist/countable.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4"></script>
-  <script src="https://unpkg.com/docsify-share/build/index.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-katex@latest/dist/docsify-katex.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js"></script>
-  <script src="https://unpkg.com/docsify-pdf-embed-plugin/src/docsify-pdf-embed.js"></script>
-  <script src="https://unpkg.com/docsify-gifcontrol/dist/docsify-gifcontrol.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-dark-mode@latest/dist/index.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-pangu/lib/pangu.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-progress@latest/dist/progress.min.js"></script>
 </body>
 </html>

@@ -13,6 +13,6 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/bluemiaomiao/go-deep-into-go)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/bluemiaomiao/go-deep-into-go/main)
 
+[开始阅读](#Introduction)
 [镜像加速](https://bluemiaomiao.gitee.io/go-deep-into-go)
 [作者博客](https://bluemiaomiao.github.io)
-[开始阅读](#所有章节)
